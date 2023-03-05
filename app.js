@@ -14,12 +14,12 @@ remoteWorkFinish = 'リモート終了'
 // 対象チャンネルのIDを定義
 channel_id = 'C04SGT7RJMA'
 
-// 最新のReminderメッセージにrimokai/rimoshuをReactionする
+// payload情報
 function postToSlack(message){
-  const ts = new Date().getTime();
+  const now = new Date();
   const xhr = new XMLHttpRequest();
   const url = `https://slack.com/api/chat.postMessage`;
-  const data = `token=${slack_app_token}&channel=${channel_id}&text=${message}&timestamp=${ts}`;
+  const data = `token=${slack_app_token}&channel=${channel_id}&text=${message}&timestamp=${now}`;
   xhr.open('POST', url);
   xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   xhr.onload = function() {
@@ -36,12 +36,17 @@ function postToSlack(message){
 
 }
 
+function comfirmFunc() {
+  const dialog = window.confirm('今日はリモートワークですか？');
+  return dialog ? postToSlack(remoteWorkStart) : postToSlack(workStart);
+}
+
 // KoTのタイムレコーダーページでイベントリスナーを設定
 function set_event_listener(){
 
     // 出勤ボタン動作
     var syukkin_elem = document.getElementsByClassName('record-btn-inner record-clock-in');
-    syukkin_elem[0].addEventListener('click', function(){postToSlack(workStart)}, false);
+    syukkin_elem[0].addEventListener('click', function(){comfirmFunc()}, false);
 
     // 退勤ボタン動作
     var taikin_elem = document.getElementsByClassName('record-btn-inner record-clock-out');
