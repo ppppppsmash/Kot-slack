@@ -1,13 +1,20 @@
 {
   "name": "Kot-slack",
-  "short_name": "Kot-slack",
+  "author": "liming.pei",
   "version": "1.0",
   "manifest_version": 3,
-
+  "description": "King of timeとslackの拡張機能です。",
   "content_scripts": [
       {
           "matches": [ "https://s2.kingtime.jp/independent/recorder/personal/" ],
           "js": [ "app.js" ]
       }
-  ]
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
 }
