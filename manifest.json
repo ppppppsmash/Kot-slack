@@ -1,0 +1,13 @@
+{
+  "name": "Kot-slack",
+  "short_name": "Kot-slack",
+  "version": "1.0",
+  "manifest_version": 3,
+
+  "content_scripts": [
+      {
+          "matches": [ "https://s2.kingtime.jp/independent/recorder/personal/" ],
+          "js": [ "app.js" ]
+      }
+  ]
+}
