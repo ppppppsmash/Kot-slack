@@ -1,0 +1,25 @@
+{
+  "name": "Kot slack extension",
+  "author": "liming.pei",
+  "version": "1.4",
+  "manifest_version": 3,
+  "description": "King of timeとslackの拡張機能です。",
+  "content_scripts": [
+      {
+        "matches": [ "https://s3.kingtime.jp/independent/recorder2/personal/*" ],
+        "js": [ "./js/app.js" ],
+        "all_frames": true
+      }
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "options_ui": {
+      "page": "options.html",
+      "open_in_tab": true
+  },
+  "action": {
+    "default_title": "KOF打刻",
+    "default_popup": "app.html"
+  }
+}

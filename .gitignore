@@ -1,2 +1,19 @@
 .DS_Store
+.history
+*.log
+*.lock
+package-lock.json
+**/.DS_Store
+**/**/.DS_Store
 .vscode/
+.env
+
+# dependencies
+node_modules
+
+# generate
+dist
+
+# editor
+.idea
+.vscode
